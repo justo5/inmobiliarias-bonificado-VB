@@ -29,7 +29,8 @@ export class Pricing {
       price: '350',
       description:
         'Tenés fotos y videos de tus propiedades. Nosotros ponemos la estrategia y optimizamos cada peso en Meta para generar consultas calificadas.',
-      featured: false,
+      featured: true,
+      badge: 'Más elegido',
       features: [
         { label: 'Gestión Meta Ads', included: true },
         { label: 'Plan del mes', included: true },
@@ -44,8 +45,7 @@ export class Pricing {
       price: '490',
       description:
         'No tenés tiempo para armar piezas de cada propiedad. Nosotros creamos los anuncios —fotos, carruseles y videos— y los gestionamos. Vos solo recibís consultas.',
-      featured: true,
-      badge: 'Más elegido',
+      featured: false,
       features: [
         { label: 'Gestión Meta Ads', included: true },
         { label: 'Plan del mes', included: true },

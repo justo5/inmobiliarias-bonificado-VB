@@ -227,9 +227,12 @@
 
   .pricing__grid {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     grid-template-columns: none;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-left: 24px;
     -webkit-overflow-scrolling: touch;
     gap: 16px;
     padding: 4px 24px 14px;
@@ -241,8 +244,8 @@
   }
 
   .pricing__card {
-    flex: 0 0 82%;
-    scroll-snap-align: center;
+    flex: 0 0 85%;
+    scroll-snap-align: start;
   }
 
   .pricing__footnote {
