@@ -1,5 +1,5 @@
 <section id="resultados" class="testimonials">
-  <div class="testimonials__header">
+  <div class="testimonials__header" appFadeIn>
     <div class="testimonials__eyebrow">
       <span class="testimonials__eyebrow-line"></span>
       <span class="testimonials__eyebrow-text">Lo que dicen nuestros clientes</span>
@@ -13,8 +13,8 @@
   </div>
 
   <div class="testimonials__grid">
-    @for (review of reviews; track review.name) {
-      <div class="testimonials__card">
+    @for (review of reviews; track review.name; let i = $index) {
+      <div class="testimonials__card" appFadeIn [appFadeInDelay]="(i % 3) * 90">
         <div class="testimonials__card-head">
           <span class="testimonials__avatar">{{ review.initials }}</span>
           <div>
@@ -28,7 +28,7 @@
     }
   </div>
 
-  <div class="testimonials__instagram">
+  <div class="testimonials__instagram" appFadeIn>
     <div class="testimonials__instagram-eyebrow">Nuestro Instagram es nuestro currículum</div>
     <h3 class="testimonials__instagram-title">¿Querés ver más casos de éxito reales?</h3>
     <p class="testimonials__instagram-copy">

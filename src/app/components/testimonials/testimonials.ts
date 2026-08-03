@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FadeIn } from '../../directives/fade-in/fade-in';
 
 interface Review {
   name: string;
@@ -9,7 +10,7 @@ interface Review {
 
 @Component({
   selector: 'app-testimonials',
-  imports: [],
+  imports: [FadeIn],
   templateUrl: './testimonials.html',
   styleUrl: './testimonials.css',
 })

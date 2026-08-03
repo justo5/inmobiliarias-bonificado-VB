@@ -11,7 +11,6 @@ import {
   viewChildren,
 } from '@angular/core';
 import { Scroll } from '../../services/scroll';
-import { ParallaxDepth } from '../../directives/parallax-depth/parallax-depth';
 
 interface CasoExito {
   src: string;
@@ -19,7 +18,6 @@ interface CasoExito {
 
 @Component({
   selector: 'app-hero',
-  imports: [ParallaxDepth],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
@@ -30,6 +28,7 @@ export class Hero implements AfterViewInit, OnDestroy {
   private readonly heroSection = viewChild.required<ElementRef<HTMLElement>>('heroSection');
   private readonly backdrop = viewChild.required<ElementRef<HTMLElement>>('backdrop');
   private readonly scrim = viewChild.required<ElementRef<HTMLElement>>('scrim');
+  private readonly copyLayer = viewChild.required<ElementRef<HTMLElement>>('copyLayer');
 
   private readonly viewport = viewChild<ElementRef<HTMLElement>>('viewport');
   private readonly cards = viewChildren<ElementRef<HTMLElement>>('card');
@@ -50,6 +49,8 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   private intersectionObserver?: IntersectionObserver;
   private resizeObserver?: ResizeObserver;
+  private copyLayerResizeObserver?: ResizeObserver;
+  private readonly onWindowResize = (): void => this.updateHeroHeight();
 
   constructor() {
     effect(() => {
@@ -65,8 +66,10 @@ export class Hero implements AfterViewInit, OnDestroy {
 
     this.setupIntersectionObserver();
     this.setupResizeObserver();
+    window.addEventListener('resize', this.onWindowResize);
     requestAnimationFrame(() => {
       this.updateTrackOffset();
+      this.updateHeroHeight();
       this.playActiveCasoMuted();
     });
   }
@@ -74,6 +77,8 @@ export class Hero implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.intersectionObserver?.disconnect();
     this.resizeObserver?.disconnect();
+    this.copyLayerResizeObserver?.disconnect();
+    window.removeEventListener('resize', this.onWindowResize);
   }
 
   protected prevCaso(): void {
@@ -145,9 +150,24 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   private setupResizeObserver(): void {
     const viewport = this.viewport()?.nativeElement;
-    if (!viewport || typeof ResizeObserver === 'undefined') return;
-    this.resizeObserver = new ResizeObserver(() => this.updateTrackOffset());
-    this.resizeObserver.observe(viewport);
+    if (viewport && typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => this.updateTrackOffset());
+      this.resizeObserver.observe(viewport);
+    }
+
+    if (typeof ResizeObserver === 'undefined') return;
+    this.copyLayerResizeObserver = new ResizeObserver(() => this.updateHeroHeight());
+    this.copyLayerResizeObserver.observe(this.copyLayer().nativeElement);
+  }
+
+  /** The copy layer is absolutely positioned, so it can't grow `.hero` on its own — size the section to fit it so stacked mobile content (incl. the testimonial videos) never gets clipped by `overflow: hidden`. */
+  private updateHeroHeight(): void {
+    const hero = this.heroSection().nativeElement;
+    const layer = this.copyLayer().nativeElement;
+    const topOffsetPx = window.innerHeight * 0.19;
+    const requiredHeight = topOffsetPx + layer.scrollHeight + 40;
+    const minHeight = window.innerHeight * 1.15;
+    this.renderer.setStyle(hero, 'height', `${Math.max(requiredHeight, minHeight)}px`);
   }
 
   private updateTrackOffset(): void {

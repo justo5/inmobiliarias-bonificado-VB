@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FadeIn } from '../../directives/fade-in/fade-in';
 
 @Component({
   selector: 'app-oferta',
-  imports: [],
+  imports: [FadeIn],
   templateUrl: './oferta.html',
   styleUrl: './oferta.css',
 })

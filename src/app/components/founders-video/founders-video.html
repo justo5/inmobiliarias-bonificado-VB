@@ -1,11 +1,13 @@
 <section id="video-fundadores" class="founders-video">
-  <div class="founders-video__eyebrow">
+  <div class="founders-video__eyebrow" appFadeIn>
     <span class="founders-video__eyebrow-line"></span>
     <span class="founders-video__eyebrow-text">Conocé al equipo</span>
   </div>
-  <h2 class="founders-video__title">Fundadores de Vamos Bien te explican cómo vender más</h2>
+  <h2 class="founders-video__title" appFadeIn [appFadeInDelay]="80">
+    Fundadores de Vamos Bien te explican cómo vender más
+  </h2>
 
-  <div class="founders-video__wrap" (click)="togglePlay()">
+  <div class="founders-video__wrap" appFadeIn [appFadeInDelay]="160" (click)="togglePlay()">
     <video
       #videoRef
       class="founders-video__video"

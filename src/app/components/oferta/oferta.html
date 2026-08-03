@@ -1,5 +1,5 @@
 <section id="oferta" class="oferta">
-  <div class="oferta__copy">
+  <div class="oferta__copy" appFadeIn>
     <div class="oferta__eyebrow">
       <span class="oferta__eyebrow-line"></span>
       <span class="oferta__eyebrow-text">La oferta</span>
@@ -17,7 +17,7 @@
     <a href="#sumate" class="oferta__cta">Quiero mi primer mes bonificado <span class="oferta__cta-arrow">→</span></a>
   </div>
 
-  <div class="oferta__card">
+  <div class="oferta__card" appFadeIn [appFadeInDelay]="120">
     <span class="oferta__card-label">Incluido en esos 30 días</span>
     <ul class="oferta__list">
       @for (item of included; track item) {

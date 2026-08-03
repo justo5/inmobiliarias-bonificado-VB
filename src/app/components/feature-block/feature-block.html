@@ -5,7 +5,7 @@
   [style.padding-top]="paddingTop()"
   [style.padding-bottom]="paddingBottom()"
 >
-  <div class="feature-block__text">
+  <div class="feature-block__text" appFadeIn>
     <span class="feature-block__number">{{ number() }}</span>
     <div class="feature-block__eyebrow">
       <span class="feature-block__eyebrow-line"></span>
@@ -15,7 +15,13 @@
     <p class="feature-block__description">{{ description() }}</p>
   </div>
 
-  <div class="feature-block__image" [style.height]="imageHeight()" [appParallaxFloat]="0.06">
+  <div
+    class="feature-block__image"
+    [style.height]="imageHeight()"
+    [appParallaxFloat]="0.06"
+    appFadeIn
+    [appFadeInDelay]="120"
+  >
     <img [src]="imageSrc()" [alt]="imageAlt()" class="feature-block__image-photo" />
   </div>
 </section>

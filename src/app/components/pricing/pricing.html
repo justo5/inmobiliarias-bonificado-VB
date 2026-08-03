@@ -1,5 +1,5 @@
 <section id="planes" class="pricing">
-  <div class="pricing__header">
+  <div class="pricing__header" appFadeIn>
     <div class="pricing__eyebrow">
       <span class="pricing__eyebrow-line"></span>
       <span class="pricing__eyebrow-text">Planes para inmobiliarias</span>
@@ -14,8 +14,13 @@
   </div>
 
   <div class="pricing__grid">
-    @for (plan of plans; track plan.name) {
-      <div class="pricing__card" [class.pricing__card--featured]="plan.featured">
+    @for (plan of plans; track plan.name; let i = $index) {
+      <div
+        class="pricing__card"
+        [class.pricing__card--featured]="plan.featured"
+        appFadeIn
+        [appFadeInDelay]="i * 100"
+      >
         @if (plan.badge) {
           <span class="pricing__badge">{{ plan.badge }}</span>
         }

@@ -26,6 +26,7 @@
 .hero {
   position: relative;
   height: 116vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -325,10 +326,6 @@
 }
 
 @media (max-width: 620px) {
-  .hero {
-    height: 145vh;
-  }
-
   .hero__title {
     line-height: 1.5;
   }

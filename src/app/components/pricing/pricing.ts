@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FadeIn } from '../../directives/fade-in/fade-in';
 
 interface PricingFeature {
   label: string;
@@ -17,7 +18,7 @@ interface PricingPlan {
 
 @Component({
   selector: 'app-pricing',
-  imports: [],
+  imports: [FadeIn],
   templateUrl: './pricing.html',
   styleUrl: './pricing.css',
 })

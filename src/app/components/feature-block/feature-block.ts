@@ -1,11 +1,12 @@
 import { Component, input } from '@angular/core';
 import { ParallaxFloat } from '../../directives/parallax-float/parallax-float';
+import { FadeIn } from '../../directives/fade-in/fade-in';
 
 export type FeatureBlockImageSide = 'left' | 'right';
 
 @Component({
   selector: 'app-feature-block',
-  imports: [ParallaxFloat],
+  imports: [ParallaxFloat, FadeIn],
   templateUrl: './feature-block.html',
   styleUrl: './feature-block.css',
 })

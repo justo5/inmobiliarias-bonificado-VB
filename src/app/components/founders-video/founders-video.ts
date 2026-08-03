@@ -1,8 +1,9 @@
 import { Component, ElementRef, signal, viewChild } from '@angular/core';
+import { FadeIn } from '../../directives/fade-in/fade-in';
 
 @Component({
   selector: 'app-founders-video',
-  imports: [],
+  imports: [FadeIn],
   templateUrl: './founders-video.html',
   styleUrl: './founders-video.css',
 })

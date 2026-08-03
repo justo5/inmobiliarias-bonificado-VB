@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { FadeIn } from '../../directives/fade-in/fade-in';
 
 interface FaqItem {
   question: string;
@@ -7,7 +8,7 @@ interface FaqItem {
 
 @Component({
   selector: 'app-faq',
-  imports: [],
+  imports: [FadeIn],
   templateUrl: './faq.html',
   styleUrl: './faq.css',
 })
