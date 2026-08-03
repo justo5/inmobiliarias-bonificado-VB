@@ -67,9 +67,9 @@ export class FilloutForm implements AfterViewInit, OnDestroy {
   }
 
   private loadFilloutScript(): void {
-    if (document.querySelector('script[src*="fillout-embed"]')) return;
+    if (document.querySelector('script[src*="fillout.com/embed"]')) return;
     const script = document.createElement('script');
-    script.src = '/fillout-embed.js';
+    script.src = 'https://server.fillout.com/embed/v1/';
     script.async = true;
     document.body.appendChild(script);
   }

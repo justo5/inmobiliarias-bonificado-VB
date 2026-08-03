@@ -24,9 +24,9 @@ export class Faq {
         'Tu primer pago a Vamos Bien se realiza recién al comenzar el segundo mes. Antes de eso, trabajamos normalmente en tu inmobiliaria sin cobrarte honorarios.',
     },
     {
-      question: '¿Por qué hay un mínimo de 3 meses?',
+      question: '¿Por qué hay un mínimo de 6 meses?',
       answer:
-        'El algoritmo de Meta necesita tiempo para aprender qué perfil de comprador o inquilino convierte mejor para tus propiedades. Primer mes: base. Segundo: resultados sólidos. Tercero: escalamos lo que funciona.',
+        'El algoritmo de Meta necesita tiempo para aprender qué perfil de comprador o inquilino convierte mejor para tus propiedades. Los primeros meses construimos la base y afinamos la segmentación, y los siguientes escalamos lo que mejor funciona para maximizar resultados.',
     },
     {
       question: '¿El presupuesto de los anuncios está incluido?',
