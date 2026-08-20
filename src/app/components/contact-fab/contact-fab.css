@@ -1,0 +1,64 @@
+.contact-fab {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: var(--color-gold);
+  color: var(--color-bg-deep);
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  animation: contact-fab-pop 0.5s ease 0.3s both;
+}
+
+.contact-fab:hover {
+  background: var(--color-gold-hover);
+  color: var(--color-bg-deep);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+}
+
+.contact-fab__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.contact-fab__label {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@keyframes contact-fab-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-fab {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-fab {
+    right: 16px;
+    bottom: 16px;
+    padding: 14px;
+  }
+
+  .contact-fab__label {
+    display: none;
+  }
+}
